@@ -29,6 +29,7 @@ public class Principal extends javax.swing.JFrame {
         txtDeposMens = new javax.swing.JTextField();
         btOk = new javax.swing.JButton();
         lbPoupado = new javax.swing.JLabel();
+        brSair = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Poupex");
@@ -48,22 +49,35 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
+        brSair.setText("Sair");
+        brSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                brSairActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lbJurosMes)
-                            .addComponent(lbNumAnos)
-                            .addComponent(lbDeposMens))
-                        .addGap(34, 34, 34))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(lbTotalPoupado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lbJurosMes)
+                                    .addComponent(lbNumAnos)
+                                    .addComponent(lbDeposMens))
+                                .addGap(34, 34, 34))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lbTotalPoupado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(brSair)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(txtDeposMens)
                     .addComponent(txtNumAnos)
@@ -92,7 +106,9 @@ public class Principal extends javax.swing.JFrame {
                     .addComponent(lbTotalPoupado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(lbPoupado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(11, 11, 11)
-                .addComponent(btOk)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btOk)
+                    .addComponent(brSair))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -106,12 +122,18 @@ public class Principal extends javax.swing.JFrame {
         deposito = Double.parseDouble(txtDeposMens.getText());
         total = 0;
         for (int r=0; r<mes; r++){
-            rendimento = ((total)*juros)/ 100;    
+            rendimento = ((total)*juros) / 100;    
             total += rendimento + deposito;    
     }
         lbPoupado.setText(String.valueOf(formato.format(total)));
         
     }//GEN-LAST:event_btOkActionPerformed
+
+    private void brSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_brSairActionPerformed
+        // Botão Sair:
+        System.out.println("Saindo");
+        System.exit(0);
+    }//GEN-LAST:event_brSairActionPerformed
 
 
     public static void main(String args[]) {
@@ -123,6 +145,7 @@ public class Principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton brSair;
     private javax.swing.JButton btOk;
     private javax.swing.JLabel lbDeposMens;
     private javax.swing.JLabel lbJurosMes;
